@@ -38,6 +38,7 @@ private:
 
 int main()
 {
+   int tam = 0;
    string exclude;
    string choice;
    string nome, numero, egmail, endereco;
@@ -51,19 +52,27 @@ int main()
    /* DECLARA O CONTATO */
    contact contato;
 
-
-
-
   while (True) {
 
     cout << "Escolha uma opcao: Adicionar contato (A) | Excluir contato (E) | Mostrar contatos (M) | Editar contato (D): ";
     getline(cin, choice);
+
+    /* MOSTRAR OS CONTATOS */
+    if(choice == "M"){
+        cout << "Seus contatos sao: " << endl;
+        for(i=0; i<=int(sizeof(contactName)); i++){
+            cout << contactName[i] << endl;
+
+       }
+
+    }
 
     /* ADICIONANDO CONTATOS */
     if(choice =="A"){
 
        cout << "Quantos contatos serao adicionados?: " << endl;
        cin >> numberContacts;
+       tam += numberContacts;
 
        for(i=1; i<=numberContacts; i++){
 
@@ -94,7 +103,7 @@ int main()
 
        for(i=0; i<=int(sizeof(vet))/4; i++)
 
-           if(contato.name==edit){
+           if(contato.name==nome){
                cout << contato.name << endl;
                cout << contato.phone << endl;
                cout << contato.email << endl;
@@ -103,25 +112,22 @@ int main()
                getline(cin, exclude);
                if(exclude == "S"){
                    /* FUNÇÃO PARA EXCLUIR */
+                   contactName[i] = "-" ;
                    cout << "Contato excluido!";
                }if(exclude == "N"){
                    cout << "Escolha uma opcao: Adicionar contato (A) | Excluir contato (E) | Mostrar contatos (M) | Editar contato (D): ";
                    getline(cin, choice);
-
                }
+
+         }
+           else{
+             cout << "Este contato nao existe" << endl;
+             break;
+
          }
 
    }
 
-
-   /* MOSTRAR OS CONTATOS */
-   if(choice == "M"){
-
-       for(i=0; i<=int(sizeof(contactName)); i++){
-
-           cout << contactName[i] << endl;
-       }
-   }
 
    /* EDITAR CONTATOS */
    if(choice == "D"){
@@ -135,7 +141,7 @@ int main()
                cout << contato.email << endl;
                cout << contato.adress << endl;
 
-               cout << "Editar: Nome (N) | Numero (NUM) | Email (EM) | Endereco (END)";
+               cout << "Editar: Nome (N) | Numero (NUM) | Email (EM) | Endereco (END): ";
                getline(cin, edition);
 
                if(edition == "N"){
@@ -159,6 +165,7 @@ int main()
                    getline(cin, endereco);
                    contato.setName(endereco);
                }
+
                cout << "Contato atualizado: " << endl;
                cout << contato.name << endl;
                cout << contato.phone << endl;
@@ -167,9 +174,9 @@ int main()
 
            }
 
-   }
+        }
 
-}
 
+    }
 
 }
