@@ -8,3 +8,6 @@ SOURCES += \
 
 DISTFILES += \
     README.md
+
+HEADERS += \
+    classes.h
