@@ -119,17 +119,17 @@ int main()
                    getline(cin, nome);
                    vet.at(i).name = nome;
 
-               }if(edition == "NUM"){
+               }else if(edition == "NUM"){
                    cout << "Novo numero: ";
                    getline(cin, numero);
                    vet.at(i).phone = numero;
 
-               }if(edition == "EM"){
+               }else if(edition == "EM"){
                    cout << "Novo email: ";
                    getline(cin, egmail);
                    vet.at(i).email = egmail;
 
-               }if(edition == "END"){
+               }else if(edition == "END"){
                    cout << "Novo endereco: ";
                    getline(cin, endereco);
                    vet.at(i).adress = endereco;
